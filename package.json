@@ -1,0 +1,50 @@
+{
+  "name": "tilcai-mcp",
+  "version": "0.2.0",
+  "description": "MCP server: lets an EVM agent pay USDC to a Stellar address through tilcai-infrastructure (CCTP V2, Avalanche Fuji -> Stellar Testnet, or Avalanche C-Chain -> Stellar Public Network with TILCAI_NETWORK=mainnet)",
+  "type": "module",
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "bin": {
+    "tilcai-mcp": "dist/main.js"
+  },
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && chmod +x dist/main.js",
+    "typecheck": "tsc -p .",
+    "test": "tsx --test 'test/**/*.test.ts'",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  },
+  "main": "dist/main.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    ".env.example"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "stellar",
+    "usdc",
+    "cctp",
+    "avalanche",
+    "payments",
+    "x402"
+  ],
+  "license": "MIT",
+  "author": "Saul Choque <saulchoque123@gmail.com>",
+  "publishConfig": {
+    "access": "public"
+  }
+}
